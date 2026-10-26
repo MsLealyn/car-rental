@@ -4,7 +4,7 @@
 
 <template>
     <div class="text-gray-600 body-font bg-blue-100">
-        <div class="container flex flex-col md:flex-row lg:max-w-5xl w-full px-5 py-12 md:py-24 mx-auto section"
+        <div class="container flex flex-col md:flex-row lg:max-w-5xl w-full pl-50 py-12 md:py-24 mx-auto section"
             id="contact-form">
             <div class="md:w-1/3 w-full">
                 <h1 class="text-4xl text-gray-800 sm:text-4xl font-bold title-font mb-4">Contact Us</h1>

@@ -1,11 +1,21 @@
 <script>
 
+import Navbar from './components/Navbar.vue';
+import HomeView from './components/HomeView.vue';
+import AboutView from './components/AboutView.vue';
+import ContactView from './components/ContactView.vue';
+import MyBookingsView from './components/MyBookingsView.vue';
 import CarCard from './components/CarCard.vue';
 import CarDetailsModal from './components/CarDetailsModal.vue';
 
+
 export default {
   components: {
-
+    Navbar,
+    HomeView,
+    AboutView,
+    ContactView,
+    MyBookingsView,
     CarCard,
     CarDetailsModal
   },
@@ -84,14 +94,15 @@ export default {
         }
       ],
       details: [],
-      currentPage: 'Home',
+      currentPage: 'home',
       // modal: true
     }
   },
   methods: {
-    showPage(i) {
-      this.currentPage = i
+     section(menu) {
+      this.currentPage = menu;
     },
+ 
     openModalAct(service) {
       // this.modal = mod
       this.details.push(service)
@@ -112,6 +123,11 @@ export default {
 
 
 <template>
-  <CarCard :carsPicture="array1" @openModal="openModalAct" />
+  <Navbar @goTo="section"  />
+  <HomeView v-if="currentPage == 'home'" />
+  <AboutView v-if="currentPage == 'about'" />
+  <ContactView v-if="currentPage == 'ContactView'" />
+  <MyBookingsView v-if="currentPage == 'MyBookingsView'" />
+  <CarCard v-if="currentPage == 'CarCard'" :carsPicture="array1" @openModal="openModalAct" />
   <CarDetailsModal @closeToParent="closeModal" :carsPicture="details" />
 </template>

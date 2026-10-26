@@ -20,7 +20,7 @@ export default {
 
         <h2 class="text-3xl font-bold text-white mb-8 text-center">DSLJ Car Rental</h2>
 
-        <div class="grid grid-cols-3 gap-8 container mx-auto px-4">
+        <div class="grid grid-cols-3 gap-8 container mx-auto pl-50">
 
             <div v-for="(service, index) in carsPicture" :key="service.id" class="">
                 <div

@@ -5,7 +5,7 @@
 </script>
 
 <template>
-    <div class="max-w-4xl mx-auto py-10">
+    <div class="max-w-4xl mx-auto py-10 pl-50">
         <div class="bg-white rounded-lg border-2 border-blue-400/20 p-6 md:p-8 lg:p-10 shadow-lg">
             <div class="space-y-6">
                 <h1 class="text-2xl md:text-3xl font-bold text-blue-700 uppercase text-center">My Bookings</h1>

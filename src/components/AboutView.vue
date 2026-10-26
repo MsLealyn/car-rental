@@ -4,7 +4,7 @@
 
 <template>
     <section id="about" class="py-20 md:px-20 lg:px-20 bg-[#121212]">
-        <div class="container mx-auto px-4">
+        <div class="container mx-auto pl-50">
             <div class="mb-12">
                 <!-- Heading -->
                 <h2 class="text-purple-400 text-lg mb-2" data-aos="fade-down">
