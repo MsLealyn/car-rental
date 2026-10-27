@@ -140,7 +140,7 @@ export default {
       modal: false,
       booking: [],
       confirmedBooking: [],
-      modalConfirm: true
+      modalConfirm: true,
 
     }
   },
