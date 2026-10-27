@@ -1,4 +1,6 @@
 <script>
+import MyBookingsView from './MyBookingsView.vue';
+
 export default {
     props: ['carsPicture'],
     data(){
@@ -13,6 +15,9 @@ export default {
         // }
         remove(detail){
             this.$emit('closeToParent', detail)
+        },
+        bookNow(modal){
+            this.$emit('showForm', modal)
         }
     }
 
@@ -38,7 +43,7 @@ export default {
                                 <p class="font-arial font-bold text-md">Price:<span class="font-semibold">₱{{
                                     detail.price
                                         }}.00 /24hrs</span></p>
-                                <button
+                                <button @click="bookNow(true)"
                                     class="bg-[#0d4976e0] px-8 py-2 rounded-full text-white font-arial font-semibold mt-5">BOOK</button>
                             </div>
                         </div>

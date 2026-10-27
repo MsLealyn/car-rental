@@ -1,9 +1,23 @@
 <script>
+    export default{
+        data(){
+            return{
 
+            }
+        },
+        methods:{
+            toCars(page){
+                this.$emit('go-To', page)
+            },
+            toContact(page){
+                this.$emit('go-To', page)
+            }
+        }
+    }
 </script>
 
 <template>
-    <section id="about" class="py-20 md:px-20 lg:px-20 bg-[#121212]">
+    <section id="about" class="py-20 md:px-20 lg:px-20 bg-[#121212] h-screen">
         <div class="container mx-auto pl-50">
             <div class="mb-12">
                 <!-- Heading -->
@@ -43,14 +57,14 @@
 
             <!-- Buttons Section -->
             <div class="flex flex-col sm:flex-row items-center gap-4 mt-8" data-aos="fade-up">
-                <a href="#team"
+                <button @click="toCars('CarCard')"
                     class="cursor-pointer rounded-full bg-purple-600 hover:bg-purple-700 text-white py-3 px-8">
                    View Cars
-                </a>
-                <a href="#contact"
+                </button>
+                <button @click="toContact('ContactView')"
                     class="cursor-pointer rounded-full border-2 py-3 px-8 border-white text-white hover:bg-white hover:text-purple-900 transition duration-300 ease-in-out">
                     Contact Us
-                </a>
+                </button>
             </div>
         </div>
     </section>

@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="text-gray-600 body-font bg-blue-100">
+    <div class="text-gray-600 body-font bg-blue-100 h-screen">
         <div class="container flex flex-col md:flex-row lg:max-w-5xl w-full pl-50 py-12 md:py-24 mx-auto section"
             id="contact-form">
             <div class="md:w-1/3 w-full">
