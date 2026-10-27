@@ -1,12 +1,22 @@
 <script>
+    export default{
+        props: ['bookingconfirmed'],
+        data(){
+            return{
 
+            }
+        },
+        methods:{
+
+        }
+    }
 
 
 </script>
 
 <template>
-    <div class="max-w-4xl mx-auto py-10">
-        <div class="bg-white rounded-lg border-2 border-blue-400/20 p-6 md:p-8 lg:p-10 shadow-lg">
+    <div v-for="booked in bookingconfirmed"  class="max-w-4xl mx-auto py-10 pl-50">
+        <div  class="bg-white rounded-lg border-2 border-blue-400/20 p-6 md:p-8 lg:p-10 shadow-lg">
             <div class="space-y-6">
                 <h1 class="text-2xl md:text-3xl font-bold text-blue-700 uppercase text-center">My Bookings</h1>
                 <div class="text-center">
@@ -24,9 +34,9 @@
 
 
                         <div class="space-y-3">
-                            <p class="text-gray-700 font-medium block">Phone Number:</p>
-                            <p class="text-gray-700 font-medium block">Email Address:</p>
-                            <p class="text-gray-700 font-medium block">Full Name:</p>
+                            <p class="text-gray-700 font-medium block">Phone Number: {{ booked.number }}</p>
+                            <p class="text-gray-700 font-medium block">Email Address: {{ booked.email }}</p>
+                            <p class="text-gray-700 font-medium block">Full Name: {{ booked.name }}</p>
 
 
 
@@ -39,30 +49,29 @@
                     <h1 class="text-blue-800 font-bold block">2. RENTAL PERIOD & LOCATION</h1>
                     <div class="flex justify-between items-center pr-50">
                         <div>
-                            <p class="text-gray-700 font-medium block">Pick Up:</p>
-                            <p class="text-gray-700 font-medium block">Drop Off:</p>
+                            <p class="text-gray-700 font-medium block">Pick Up: {{ booked.PickLoc }}</p>
+                            <p class="text-gray-700 font-medium block">Drop Off: {{ booked.droploc }}</p>
                         </div>
                         <div class="">
                             <p class="text-gray-700 font-medium block">Agency Location:</p>
-                            <p class="text-gray-700 font-medium block">Duration:</p>
+                            <p class="text-gray-700 font-medium block">Duration: {{ booked.duration }}</p>
                         </div>
                     </div>
 
 
                 </div>
 
-
                 <div class="space-y-3">
                     <h1 class="text-blue-800 font-bold block">3. PAYMENT SUMMARY</h1>
                     <div class="flex justify-between items-center pr-63">
                         <div>
-                            <p class="text-gray-700 font-medium block">Price:</p>
-                            <p class="text-gray-700 font-medium block">Rental Duration:</p>
+                            <p class="text-gray-700 font-medium block">Price: {{ booked.amount }}</p>
+                            <p class="text-gray-700 font-medium block">Rental Duration: {{ booked.duration }}</p>
                         </div>
                         <div>
 
                             <p class="text-gray-700 font-medium block">Sub-total:</p>
-                            <p class="text-gray-700 font-medium block">Total:</p>
+                            <p class="text-gray-700 font-medium block">Total: {{ booked.amount }}</p>
                         </div>
 
                     </div>

@@ -1,13 +1,29 @@
 <script>
 
+import Navbar from './components/Navbar.vue';
+import HomeView from './components/HomeView.vue';
+import AboutView from './components/AboutView.vue';
+import ContactView from './components/ContactView.vue';
+import MyBookingsView from './components/MyBookingsView.vue';
 import CarCard from './components/CarCard.vue';
 import CarDetailsModal from './components/CarDetailsModal.vue';
+import BookingForm from './components/BookingForm.vue';
+import BookingConf from './components/BookingConf.vue';
+import Footer from './components/Footer.vue';
+
 
 export default {
   components: {
-
+    Navbar,
+    HomeView,
+    AboutView,
+    ContactView,
+    MyBookingsView,
     CarCard,
-    CarDetailsModal
+    CarDetailsModal,
+    BookingForm,
+    BookingConf,
+    Footer 
   },
   data() {
     return {
@@ -16,7 +32,7 @@ export default {
           id: 1,
           name: "Fortuner",
           brand: "Toyota",
-          price: 900,
+          price: 4000,
           image: "https://i.pinimg.com/736x/74/95/4b/74954b6069be2d5274c7a25a0a056cc7.jpg",
           type: "Mid-size 7-seater SUV",
           status: "Available",
@@ -28,7 +44,7 @@ export default {
           id: 2,
           name: "Tanto",
           brand: "Daihatsu ",
-          price: 3000,
+          price: 3500,
           image: "https://i.pinimg.com/1200x/00/cf/66/00cf66715afb3e6bf92daeeb3c228f7e.jpg",
           type: "Kei Car",
           status: "Available",
@@ -40,7 +56,7 @@ export default {
           id: 3,
           name: "LDV T60S",
           brand: "LDV / Maxus (SAIC Motor) ",
-          price: 900,
+          price: 5000,
           image: "https://remunerator.com.au/uploads/media/LDV-eT60-1664547025.jpg",
           type: "Mid-size Pickup Truck / Ute",
           status: "Available",
@@ -52,7 +68,7 @@ export default {
           id: 4,
           name: "Staria",
           brand: "Hyundai ",
-          price: 900,
+          price: 6000,
           image: "https://www.topgear.com/sites/default/files/2021/12/STARIAHighlander2.2DAWD-01.jpg",
           type: "Minivan/ Passenger Van",
           status: "Available",
@@ -63,7 +79,7 @@ export default {
           id: 5,
           name: "Elantra",
           brand: "Nissan ",
-          price: 900,
+          price: 3000,
           image: "https://static0.carbuzzimages.com/wordpress/wp-content/uploads/gallery-images/original/1230000/700/1230700.jpg",
           type: "Compact Sedan",
           status: "Available",
@@ -74,7 +90,7 @@ export default {
           id: 6,
           name: "SW4",
           brand: " Toyota",
-          price: 900,
+          price: 4500,
           image: "https://i.pinimg.com/1200x/6f/6d/ff/6f6dff376fe0f3b9f600eaf297a5a49b.jpg",
           type: "Mid-size 7-seater SUV",
           status: "Available",
@@ -84,14 +100,20 @@ export default {
         }
       ],
       details: [],
-      currentPage: 'Home',
-      // modal: true
+      currentPage: 'home',
+      modal: false,
+      booking: [],
+      confirmedBooking: [],
+      modalConfirm: true
+   
     }
   },
   methods: {
-    showPage(i) {
-      this.currentPage = i
+     section(menu) {
+      this.currentPage = menu;
+      this.modal = false
     },
+ 
     openModalAct(service) {
       // this.modal = mod
       this.details.push(service)
@@ -101,6 +123,25 @@ export default {
     },
     closeModal(detail) {
       this.details.splice(detail, 1)
+    },
+    showFormAct(mod){
+      this.modal = mod
+      this.closeModal()
+      this.currentPage = false
+    },
+    sendForm(name, number, email, PickLoc, droploc, dateS, pickTime, returnD, typeS, pass, amount, duration){
+      this.booking.push({...name,...number,...email,...PickLoc,...droploc,...dateS,...pickTime,...returnD,...typeS,...pass,...amount,...duration})
+      this.currentPage = false
+      this.modal =false
+    },
+    receiveComplete(name,email,number, PickLoc, droploc, dateS,amount,duration){
+      this.confirmedBooking.push({...name,...email,...number,...PickLoc,...droploc,...dateS,...amount,...duration})
+      this.modalConfirm = false
+      this.currentPage = 'MyBookingsView'
+      
+    },
+    goToCars(page){
+      this.currentPage = page
     }
 
   }
@@ -112,6 +153,14 @@ export default {
 
 
 <template>
-  <CarCard :carsPicture="array1" @openModal="openModalAct" />
-  <CarDetailsModal @closeToParent="closeModal" :carsPicture="details" />
+  <Navbar @goTo="section"  />
+  <HomeView v-if="currentPage == 'home'" />
+  <AboutView v-if="currentPage == 'about'" @go-To="goToCars" />
+  <ContactView v-if="currentPage == 'ContactView'" />
+  <MyBookingsView v-if="currentPage == 'MyBookingsView'" :bookingconfirmed="confirmedBooking" />
+  <CarCard v-if="currentPage == 'CarCard'" @openModal="openModalAct"  :carsPicture="array1"  />
+  <CarDetailsModal @showForm="showFormAct" @closeToParent="closeModal" :carsPicture="details" />
+  <BookingForm v-if="modal == true" @sent-to="sendForm"/>
+  <BookingConf v-if="modalConfirm" :bookingConfirm="booking" @complete="receiveComplete" />
+  <Footer />
 </template>
