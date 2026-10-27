@@ -119,12 +119,8 @@ export default {
                     </div>
                 </div>
                 <div class="mb-4 px-10">
-                    <label class="block text-gray-700 font-bold mb-2" for="message">
-                        Message
-                    </label>
-                    <textarea
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="message" rows="4" placeholder="Enter any additional information"></textarea>
+                   <p class="text-gray-700 font-bold">Total Cost: ₱ </p>
+                
                 </div>
                 <div class="flex items-center justify-center space-x-2 mb-4">
                     <button
