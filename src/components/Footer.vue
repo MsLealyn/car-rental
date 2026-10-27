@@ -3,10 +3,10 @@
 </script>
 <template>
 
-    <footer class="px-3 pt-4 lg:px-9 border-t-2 bg-blue-300 w-full">
-        <div class="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
+    <footer class="px-3 pt-4 lg:px-9 border-t-2 bg-blue-300 w-full overflow-hidden">
+        <div class="grid gap-5 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
 
-            <div class="sm:col-span-2">
+            <div class="sm:col-span-2 pl-60">
                 <a href="#" class="inline-flex items-center">
                     <img src="https://mcqmate.com/public/images/logos/60x60.png" alt="logo" class="h-8 w-8">
                     <span class="ml-2 text-xl font-bold tracking-wide text-gray-800">DSLJ Car rental</span>
@@ -69,7 +69,7 @@
         </div>
 
         <div class="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
-            <p class="text-sm text-gray-600">© Copyright 2015 Company. All rights reserved.</p>
+            <p class="text-sm text-gray-600 pl-60">© Copyright 2015 Company. All rights reserved.</p>
             <ul class="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
                 <li>
                     <a href="#"
