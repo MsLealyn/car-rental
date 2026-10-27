@@ -26,7 +26,7 @@ export default {
                 <div
                     class="bg-sky-200 rounded-lg shadow-md overflow-hidden hover:scale-103 transition duration-300 cursor-pointer">
                         <img :src="service.image" alt=""
-                            class="w-full h-64 object-cover hover:scale-103 transition duration-300">
+                            class="w-full h-64 object-fit hover:scale-103 transition duration-300">
 
                     <div class="py-1 text-center">
                         <div class="flex justify-center items-center gap-3">

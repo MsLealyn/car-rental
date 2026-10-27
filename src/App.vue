@@ -97,7 +97,43 @@ export default {
           description: "Experience premium comfort, rugged reliability, and commanding style with this dark metallic Toyota SW4 SUV. Designed for smooth highway cruising as well as challenging off-road terrains, it provides a spacious and refined ride for family road trips, group travel, or executive rental.",
           features: "High ground clearance, spacious cabin seating, powerful performance, and modern safety & convenience features."
 
-        }
+        },
+        {
+          id: 7,
+          name: "xDrive30 xLine",
+          brand: " BMW",
+          price: 4800,
+          image: "https://assets.autoweek.nl/m/0ctylsvbxuv7_800.jpg",
+          type: "Diesel Car",
+          status: "Available",
+          description: "This shows a light beige BMW iX1 electric SUV parked in front of a modern building with wooden paneling.",
+          features: "The BMW iX1 is an all-electric luxury SUV offering up to 313 horsepower, a 440 km range, and a curved digital interior display.."
+
+        },
+        {
+          id: 8,
+          name: " Sprinter",
+          brand: "Mercedes-Benz",
+          price: 6500,
+          image: "https://www.blessthisstuff.com/imagens/listagem/2023/thum_outside-van-mercedes-sprinter-camper.jpeg",
+          type: "CamperVan",
+          status: "Available",
+          description: "The image shows a dark, off-road customized Mercedes-Benz Sprinter camper van equipped with all-terrain tires, roof racks, ladders, a front winch, and LED auxiliary lighting, parked in an open field.",
+          features: "Off-Road Modifications: Heavy-duty front bumper with integrated winch, fog lights, cowl-mounted auxiliary pod lights, and all-terrain tires."
+
+        },
+        {
+          id: 9,
+          name: " Porsche 911 Cabriolet",
+          brand: "Sports Car",
+          price: 7000,
+          image: "https://hips.hearstapps.com/hmg-prod/images/2025-porsche-911-hybrid-142-66560ae0be861.jpg",
+          type: "Convertible / Cabriolet",
+          status: "Available",
+          description: "A two-door luxury performance convertible featuring a black exterior with red soft-top/interior accents, classic rounded matrix LED headlights, and lightweight staggered alloy wheels.",
+          features: "Performance: Powered by a 3.0-liter twin-turbocharged flat-six rear-mounted engine paired with an 8-speed dual-clutch (PDK) automatic transmission."
+
+        },
       ],
       details: [],
       currentPage: 'home',
