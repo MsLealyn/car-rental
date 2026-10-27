@@ -4,7 +4,7 @@ export default {
     data() {
         return {
 
-            
+
         }
     },
     methods: {
@@ -13,13 +13,16 @@ export default {
         },
         viewBookings(fullname, emailAdd, phoneNumber, pickUpLocation, dropOffLocation, DateOfService, AmountPayable, Duration) {
             this.$emit('complete', { name: fullname, email: emailAdd, number: phoneNumber, PickLoc: pickUpLocation, droploc: dropOffLocation, dateS: DateOfService, amount: AmountPayable, duration: Duration })
-        }
+        },
+        deleteBookConfirmation(page) {
+            this.$emit('gotoModal', page)
+        },
     }
 }
 
 </script>
 <template>
-    <div v-for="con in bookingConfirm">
+    <div v-for="(con, index) in bookingConfirm">
         <div class="w-full h-fit pb-10 flex justify-center items-center pl-50 pt-10">
             <div class="w-200 border border-orange-800 shadow-lg rounded-lg">
                 <div class="text-2xl py-4 px-6 bg-blue-400/20 text-orange-800 text-center font-bold uppercase">
@@ -124,12 +127,13 @@ export default {
                         id="message" rows="4" placeholder="Enter any additional information"></textarea>
                 </div>
                 <div class="flex items-center justify-center space-x-2 mb-4">
-                    <button @click="viewBookings(con.name, con.email, con.number, con.PickLoc, con.droploc, con.dateS, con.amount, con.duration)"
+                    <button
+                        @click="viewBookings(con.name, con.email, con.number, con.PickLoc, con.droploc, con.dateS, con.amount, con.duration)"
                         class="bg-orange-800 text-white py-2 px-4 rounded hover:bg-blue-400 focus:outline-none focus:shadow-outline"
                         type="submit">
                         Confirm
                     </button>
-                    <button
+                    <button @click="deleteBookConfirmation(index)"
                         class="bg-orange-800 text-white py-2 px-4 rounded hover:bg-red-600 focus:outline-none focus:shadow-outline"
                         type="submit">
                         Cancel

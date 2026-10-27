@@ -23,7 +23,7 @@ export default {
     CarDetailsModal,
     BookingForm,
     BookingConf,
-    Footer 
+    Footer
   },
   data() {
     return {
@@ -49,7 +49,7 @@ export default {
           type: "Kei Car",
           status: "Available",
           description: "Enjoy effortless city driving with this compact yet surprisingly spacious Daihatsu Tanto. Designed for maximum practical convenience, high fuel efficiency, and easy parking, it is the ideal choice for quick city errands, daily commutes, or budget-friendly travel.",
-          features:"Excellent fuel efficiency, easy maneuvering, high roofline with ample headroom, and convenient sliding side doors."
+          features: "Excellent fuel efficiency, easy maneuvering, high roofline with ample headroom, and convenient sliding side doors."
 
         },
         {
@@ -72,8 +72,8 @@ export default {
           image: "https://www.topgear.com/sites/default/files/2021/12/STARIAHighlander2.2DAWD-01.jpg",
           type: "Minivan/ Passenger Van",
           status: "Available",
-          description:"Travel in futuristic style and premium comfort with this spacious Hyundai Staria. Designed for large families, group outings, or executive transport, it offers unmatched interior space, panoramic visibility, and a ultra-smooth ride for long journeys.",
-          features:"High-capacity seating, futuristic design, spacious luxury cabin, advanced safety technology, and smooth highway performance."
+          description: "Travel in futuristic style and premium comfort with this spacious Hyundai Staria. Designed for large families, group outings, or executive transport, it offers unmatched interior space, panoramic visibility, and a ultra-smooth ride for long journeys.",
+          features: "High-capacity seating, futuristic design, spacious luxury cabin, advanced safety technology, and smooth highway performance."
         },
         {
           id: 5,
@@ -83,8 +83,8 @@ export default {
           image: "https://static0.carbuzzimages.com/wordpress/wp-content/uploads/gallery-images/original/1230000/700/1230700.jpg",
           type: "Compact Sedan",
           status: "Available",
-          description:"Enjoy a sleek, modern ride with this stylish grey Hyundai Elantra sedan. Offering a perfect blend of fuel efficiency, cutting-edge tech, and premium interior comfort, it is an ideal choice for business trips, weekend getaways, or everyday city driving.",
-          features:"Excellent fuel economy, sleek aerodynamic design, comfortable seating for five, and advanced infotainment & safety features."
+          description: "Enjoy a sleek, modern ride with this stylish grey Hyundai Elantra sedan. Offering a perfect blend of fuel efficiency, cutting-edge tech, and premium interior comfort, it is an ideal choice for business trips, weekend getaways, or everyday city driving.",
+          features: "Excellent fuel economy, sleek aerodynamic design, comfortable seating for five, and advanced infotainment & safety features."
         },
         {
           id: 6,
@@ -94,8 +94,8 @@ export default {
           image: "https://i.pinimg.com/1200x/6f/6d/ff/6f6dff376fe0f3b9f600eaf297a5a49b.jpg",
           type: "Mid-size 7-seater SUV",
           status: "Available",
-          description:"Experience premium comfort, rugged reliability, and commanding style with this dark metallic Toyota SW4 SUV. Designed for smooth highway cruising as well as challenging off-road terrains, it provides a spacious and refined ride for family road trips, group travel, or executive rental.",
-          features:"High ground clearance, spacious cabin seating, powerful performance, and modern safety & convenience features."
+          description: "Experience premium comfort, rugged reliability, and commanding style with this dark metallic Toyota SW4 SUV. Designed for smooth highway cruising as well as challenging off-road terrains, it provides a spacious and refined ride for family road trips, group travel, or executive rental.",
+          features: "High ground clearance, spacious cabin seating, powerful performance, and modern safety & convenience features."
 
         }
       ],
@@ -105,15 +105,15 @@ export default {
       booking: [],
       confirmedBooking: [],
       modalConfirm: true
-   
+
     }
   },
   methods: {
-     section(menu) {
+    section(menu) {
       this.currentPage = menu;
       this.modal = false
     },
- 
+
     openModalAct(service) {
       // this.modal = mod
       this.details.push(service)
@@ -124,43 +124,51 @@ export default {
     closeModal(detail) {
       this.details.splice(detail, 1)
     },
-    showFormAct(mod){
+    showFormAct(mod) {
       this.modal = mod
       this.closeModal()
       this.currentPage = false
     },
-    sendForm(name, number, email, PickLoc, droploc, dateS, pickTime, returnD, typeS, pass, amount, duration){
-      this.booking.push({...name,...number,...email,...PickLoc,...droploc,...dateS,...pickTime,...returnD,...typeS,...pass,...amount,...duration})
+    sendForm(name, number, email, PickLoc, droploc, dateS, pickTime, returnD, typeS, pass, amount, duration) {
+      this.booking.push({ ...name, ...number, ...email, ...PickLoc, ...droploc, ...dateS, ...pickTime, ...returnD, ...typeS, ...pass, ...amount, ...duration })
       this.currentPage = false
-      this.modal =false
+      this.modal = false
+      this.modalConfirm = true
+      
+
     },
-    receiveComplete(name,email,number, PickLoc, droploc, dateS,amount,duration){
-      this.confirmedBooking.push({...name,...email,...number,...PickLoc,...droploc,...dateS,...amount,...duration})
+    receiveComplete(name, email, number, PickLoc, droploc, dateS, amount, duration) {
+      this.confirmedBooking.push({ ...name, ...email, ...number, ...PickLoc, ...droploc, ...dateS, ...amount, ...duration })
       this.modalConfirm = false
       this.currentPage = 'MyBookingsView'
-      
+      this.modal = false
+
     },
-    goToCars(page){
+    goToCars(page) {
       this.currentPage = page
+    },
+    goToModal(index) {
+      this.modal = true;
+      this.modalConfirm = false
+      this.booking.splice(index, 1)
     }
 
+
   }
-
-
 }
 
 </script>
 
 
 <template>
-  <Navbar @goTo="section"  />
+  <Navbar @goTo="section" />
   <HomeView v-if="currentPage == 'home'" />
   <AboutView v-if="currentPage == 'about'" @go-To="goToCars" />
   <ContactView v-if="currentPage == 'ContactView'" />
   <MyBookingsView v-if="currentPage == 'MyBookingsView'" :bookingconfirmed="confirmedBooking" />
-  <CarCard v-if="currentPage == 'CarCard'" @openModal="openModalAct"  :carsPicture="array1"  />
+  <CarCard v-if="currentPage == 'CarCard'" @openModal="openModalAct" :carsPicture="array1" />
   <CarDetailsModal @showForm="showFormAct" @closeToParent="closeModal" :carsPicture="details" />
-  <BookingForm v-if="modal == true" @sent-to="sendForm"/>
-  <BookingConf v-if="modalConfirm" :bookingConfirm="booking" @complete="receiveComplete" />
+  <BookingForm v-if="modal == true" @sent-to="sendForm" />
+  <BookingConf v-if="modalConfirm" :bookingConfirm="booking" @complete="receiveComplete" @gotoModal="goToModal" />
   <Footer />
 </template>
