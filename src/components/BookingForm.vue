@@ -153,7 +153,7 @@ export default {
                         <input v-model="AmountPayable" type="number" placeholder="Price"
                             class="bg-gray-50 border border-gray-300 text-gray-900 h-12 w-full rounded-md px-4 placeholder:text-gray-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 focus:outline-none transition-colors cursor-pointer" />
                     </div>
-
+                    
                     <div class="space-y-3">
                         <label class="text-gray-700 font-medium block">Duration:</label>
                         <select v-model="Duration"

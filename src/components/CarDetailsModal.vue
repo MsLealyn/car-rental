@@ -5,7 +5,7 @@ export default {
     props: ['carsPicture'],
     data(){
         return{
-            
+        
         }
 
     },

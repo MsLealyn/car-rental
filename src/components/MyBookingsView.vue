@@ -61,7 +61,6 @@
 
                 </div>
 
-
                 <div class="space-y-3">
                     <h1 class="text-blue-800 font-bold block">3. PAYMENT SUMMARY</h1>
                     <div class="flex justify-between items-center pr-63">

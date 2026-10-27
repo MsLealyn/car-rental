@@ -23,7 +23,7 @@ export default {
     CarDetailsModal,
     BookingForm,
     BookingConf,
-    Footer
+    Footer 
   },
   data() {
     return {

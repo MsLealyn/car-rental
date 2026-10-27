@@ -3,7 +3,7 @@ export default {
     props: ['carsPicture'],
     data() {
         return {
-
+            
         }
     },
     methods:{
