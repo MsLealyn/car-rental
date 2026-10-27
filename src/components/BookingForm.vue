@@ -47,7 +47,7 @@ export default {
 </script>
 
 <template>
-    <div class=" mx-auto py-10 w-full h-fit z-1000  top-0 flex justify-center items-center pl-50">
+    <div class=" mx-auto py-10 w-full h-fit z-1000  top-0 flex justify-center items-center pl-50 bg-sky-50">
         <div class="bg-white  rounded-lg border-2 border-blue-400/20 p-6 md:p-8 lg:p-10 shadow-lg">
             <div class="space-y-6">
                 <!-- Header -->

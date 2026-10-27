@@ -23,8 +23,8 @@ export default {
 </script>
 <template>
     <div v-for="(con, index) in bookingConfirm">
-        <div class="w-full h-fit pb-10 flex justify-center items-center pl-50 pt-10">
-            <div class="w-200 border border-orange-800 shadow-lg rounded-lg">
+        <div class="w-full h-fit pb-10 flex justify-center items-center pl-50 pt-10 bg-sky-50">
+            <div class="w-200 border  border-orange-800 shadow-lg rounded-lg bg-gray-100">
                 <div class="text-2xl py-4 px-6 bg-blue-400/20 text-orange-800 text-center font-bold uppercase">
                     Booking Confirmation
                 </div>
