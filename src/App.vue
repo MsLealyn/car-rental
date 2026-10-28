@@ -55,7 +55,7 @@ export default {
         {
           id: 3,
           name: "LDV T60S",
-          brand: "LDV / Maxus (SAIC Motor) ",
+          brand: "Maxus (SAIC Motor) ",
           price: 5000,
           image: "https://remunerator.com.au/uploads/media/LDV-eT60-1664547025.jpg",
           type: "Mid-size Pickup Truck / Ute",
@@ -153,6 +153,7 @@ export default {
     openModalAct(name, brand, price, image, status, type, description, features) {
       // this.modal = mod
       this.details.push({ ...name, ...brand, ...price, ...image, ...status, ...type, ...description, ...features })
+      this.forBookingFromPrice = []
     },
     closeModalAct(i) {
       this.modal = i
@@ -175,6 +176,8 @@ export default {
       this.currentPage = false
       this.modal = false
       this.modalConfirm = true
+      
+    
 
 
 
@@ -188,6 +191,8 @@ export default {
     },
     goToCars(page) {
       this.currentPage = page
+      
+      
     },
     goToModal(index) {
       this.modal = true;
