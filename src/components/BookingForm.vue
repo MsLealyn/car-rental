@@ -178,11 +178,6 @@ export default {
                         </div>
                     </div>
 
-
-
-
-
-
                     <div class="border-t border-gray-200 pt-6 space-y-6">
                         <h3 class="text-lg font-semibold text-gray-800">3. VEHICLE PREFERENCE/SELECTED CAR</h3>
                         <div class="grid md:grid-cols-2 gap-6">
@@ -198,9 +193,6 @@ export default {
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
 
 
