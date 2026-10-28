@@ -1,6 +1,6 @@
 <script>
     export default{
-        props: ['bookingconfirmed'],
+        props: ['bookingconfirmed', 'bookingView'],
         data(){
             return{
 
@@ -24,7 +24,7 @@
                 </div>
                 <div class="flex justify-between">
                     <p class="text-gray-800 font-bold">Booking Status: <span class="text-green-500 uppercase">Confirmed</span></p>
-                    <p class="text-gray-800 font-bold">Booking Reference: BOOK-903649902 (ID: 17)</p>
+                    <p class="text-gray-800 font-bold">Booking Reference: BOOK-903649902</p>
                 </div>
                 <!-- Personal Information Section -->
                 <div class="border-t border-gray-200 pt-6 space-y-6">
@@ -53,7 +53,7 @@
                             <p class="text-gray-700 font-medium block">Drop Off: {{ booked.droploc }}</p>
                         </div>
                         <div class="">
-                            <p class="text-gray-700 font-medium block">Agency Location:</p>
+                            <p class="text-gray-700 font-medium block">Agency Location: Tagum City</p>
                             <p class="text-gray-700 font-medium block">Duration: {{ booked.duration }}</p>
                         </div>
                     </div>
@@ -61,17 +61,16 @@
 
                 </div>
 
-                <div class="space-y-3">
+                <div v-for="addbooking in bookingView" class="space-y-3">
                     <h1 class="text-blue-800 font-bold block">3. PAYMENT SUMMARY</h1>
                     <div class="flex justify-between items-center pr-63">
                         <div>
-                            <p class="text-gray-700 font-medium block">Price: {{ booked.amount }}</p>
-                            <p class="text-gray-700 font-medium block">Rental Duration: {{ booked.duration }}</p>
+                            <p class="text-gray-700 font-medium block">Price:  ₱<span class="text-green-700">{{ addbooking.price }}</span>/24hrs</p>
+                            <p class="text-gray-700 font-medium block">Service Type: {{ addbooking.name }}</p>
                         </div>
-                        <div>
-
+                        <div >
                             <p class="text-gray-700 font-medium block">Sub-total:</p>
-                            <p class="text-gray-700 font-medium block">Total: {{ booked.amount }}</p>
+                            <p class="text-gray-700 font-medium block">Total: ₱<span class="text-red-700">{{ addbooking.price }}</span></p>
                         </div>
 
                     </div>

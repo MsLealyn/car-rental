@@ -1,6 +1,8 @@
 <script>
 
 export default {
+    props: ['sendPrice'],
+    emits: ['sent-to'],
     data() {
         return {
             fullname: '',
@@ -14,8 +16,8 @@ export default {
             returnTime: '',
             typeOfService: '',
             Passenger: '',
-            AmountPayable:'',
-            Duration:''
+            AmountPayable: '',
+            Duration: ''
 
 
         }
@@ -34,8 +36,8 @@ export default {
                 returnT: this.returnTime,
                 typeS: this.typeOfService,
                 pass: this.Passenger,
-                amount:this.AmountPayable,
-                duration:this.Duration,
+                amount: this.AmountPayable,
+                duration: this.Duration,
 
             })
             alert('submitted');
@@ -147,85 +149,73 @@ export default {
                         </select>
                     </div>
                 </div>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="space-y-3">
-                        <label class="text-gray-700 font-medium block">Amount Payable:</label>
-                        <input v-model="AmountPayable" type="number" placeholder="Price"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 h-12 w-full rounded-md px-4 placeholder:text-gray-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 focus:outline-none transition-colors cursor-pointer" />
-                    </div>
-                    
-                    <div class="space-y-3">
-                        <label class="text-gray-700 font-medium block">Duration:</label>
-                        <select v-model="Duration"
-                            class="bg-gray-50 border border-gray-300 text-gray-700 h-12 w-full rounded-md px-4 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 focus:outline-none appearance-none transition-colors">
-                            <option value="">- Please Select -</option>
-                            <option value="6 hours">6 hours</option>
-                            <option value="12 hours">12 hours</option>
-                            <option value="24 hours">24 hours</option>
-                            <option value="32 hours">32 hours</option>
-                            <option value="48 hours">48 hours</option>
-                            <option value="60 hours">60 hours</option>
-                            <option value="72 hours">72 hours</option>
-                        </select>
-                    </div>
-                </div>
-
-
-
-
-
-
-                <div class="border-t border-gray-200 pt-6 space-y-6">
-                    <h3 class="text-lg font-semibold text-gray-800">3. VEHICLE PREFERENCE/SELECTED CAR</h3>
+                <div v-for="item in sendPrice">
                     <div class="grid md:grid-cols-2 gap-6">
                         <div class="space-y-3">
-                            <label class="text-gray-700 font-medium block">Type of Service:</label>
-                            <select v-model="typeOfService"
-                                class="bg-gray-50 border border-gray-300 text-gray-700 h-12 w-full rounded-md px-4 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 focus:outline-none appearance-none transition-colors">
-                                <option value="">- Please Select -</option>
-                                <option value="Fortuner Toyota">Fortuner Toyota</option>
-                                <option value="Tanto Dahaitsu">Tanto Dahaitsu</option>
-                                <option value="DV T60S LDV/ Maxus">LDV T60S LDV/ Maxus</option>
-                                <option value="Staria Hyundai">Staria Hyundai</option>
-                                <option value="Elantra Nissan">Elantra Nissan</option>
-                                <option value="SW4 Toyota">SW4 Toyota</option>
+                            <label class="text-gray-700 font-medium block">Amount Payable:</label>
+                            <div
+                                class="bg-gray-50 border border-gray-300 text-gray-900 h-12 w-full rounded-md px-4 placeholder:text-gray-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 focus:outline-none transition-colors cursor-pointer">
+                                <p class="py-3">
+                                    ₱{{ item.price }}
 
-                            </select>
+                                </p>
+                            </div>
                         </div>
 
                         <div class="space-y-3">
-                            <label class="text-gray-700 font-medium block">Passengers:</label>
-                            <select v-model="Passenger"
+                            <label class="text-gray-700 font-medium block">Duration:</label>
+                            <select v-model="Duration"
                                 class="bg-gray-50 border border-gray-300 text-gray-700 h-12 w-full rounded-md px-4 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 focus:outline-none appearance-none transition-colors">
-                                <option value="">- Please Choose -</option>
-                                <option value="1">1 Passenger</option>
-                                <option value="2">2 Passengers</option>
-                                <option value="3">3 Passengers</option>
-                                <option value="4">4 Passengers</option>
-                                <option value="5">5 Passengers</option>
-                                <option value="6">6 Passengers</option>
-                                <option value="7">7 Passengers</option>
-                                <option value="8">8 Passengers</option>
-                                <option value="9">9+ Passengers</option>
+                                <option value="">- Please Select -</option>
+                                <option value="6 hours">6 hours</option>
+                                <option value="12 hours">12 hours</option>
+                                <option value="24 hours">24 hours</option>
+                                <option value="32 hours">32 hours</option>
+                                <option value="48 hours">48 hours</option>
+                                <option value="60 hours">60 hours</option>
+                                <option value="72 hours">72 hours</option>
                             </select>
                         </div>
-
-
                     </div>
 
 
+
+
+
+
+                    <div class="border-t border-gray-200 pt-6 space-y-6">
+                        <h3 class="text-lg font-semibold text-gray-800">3. VEHICLE PREFERENCE/SELECTED CAR</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-3">
+                                <label class="text-gray-700 font-medium block">Type of Service:</label>
+                                <div
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 h-12 w-full rounded-md px-4 placeholder:text-gray-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 focus:outline-none transition-colors cursor-pointer">
+                                    <p class="py-3">
+                                        {{ item.name }}
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                 </div>
 
-                <!-- Submit Button -->
-                <div class="pt-6">
-                    <button @click="submitNa"
-                        class="w-full bg-orange-800 cursor-pointer hover:bg-orange-600 text-white font-semibold h-14 text-lg rounded-md transition-colors duration-200 shadow-md hover:shadow-lg">
-                        Submit
-                    </button>
-                </div>
+
+            </div>
+
+            <!-- Submit Button -->
+            <div class="pt-6">
+                <button @click="submitNa"
+                    class="w-full bg-orange-800 cursor-pointer hover:bg-orange-600 text-white font-semibold h-14 text-lg rounded-md transition-colors duration-200 shadow-md hover:shadow-lg">
+                    Submit
+                </button>
             </div>
         </div>
     </div>
+   
 
 
 
