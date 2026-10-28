@@ -140,8 +140,8 @@ export default {
       modal: false,
       booking: [],
       confirmedBooking: [],
-      modalConfirm: true
-
+      modalConfirm: true,
+      forBookingFromPrice: [],
     }
   },
   methods: {
@@ -150,9 +150,9 @@ export default {
       this.modal = false
     },
 
-    openModalAct(service) {
+    openModalAct(name, brand, price, image, status, type, description, features) {
       // this.modal = mod
-      this.details.push(service)
+      this.details.push({ ...name, ...brand, ...price, ...image, ...status, ...type, ...description, ...features })
     },
     closeModalAct(i) {
       this.modal = i
@@ -160,21 +160,27 @@ export default {
     closeModal(detail) {
       this.details.splice(detail, 1)
     },
-    showFormAct(mod) {
+    showFormAct(price, name, mod) {
       this.modal = mod
       this.closeModal()
       this.currentPage = false
+      this.forBookingFromPrice.push({ ...price, ...name })
+      this.modal = true
+      this.modalConfirm = false
+
+
     },
-    sendForm(name, number, email, PickLoc, droploc, dateS, pickTime, returnD, typeS, pass, amount, duration) {
-      this.booking.push({ ...name, ...number, ...email, ...PickLoc, ...droploc, ...dateS, ...pickTime, ...returnD, ...typeS, ...pass, ...amount, ...duration })
+    sendForm(name, number, email, PickLoc, droploc, dateS, pickTime, returnD, typeS, pass, amount, duration, price) {
+      this.booking.push({ ...name, ...number, ...email, ...PickLoc, ...droploc, ...dateS, ...pickTime, ...returnD, ...typeS, ...pass, ...amount, ...duration, ...price })
       this.currentPage = false
       this.modal = false
       this.modalConfirm = true
-      
+
+
 
     },
-    receiveComplete(name, email, number, PickLoc, droploc, dateS, amount, duration) {
-      this.confirmedBooking.push({ ...name, ...email, ...number, ...PickLoc, ...droploc, ...dateS, ...amount, ...duration })
+    receiveComplete(name, email, number, PickLoc, droploc, dateS, amount, duration, price) {
+      this.confirmedBooking.push({ ...name, ...email, ...number, ...PickLoc, ...droploc, ...dateS, ...amount, ...duration, ...price })
       this.modalConfirm = false
       this.currentPage = 'MyBookingsView'
       this.modal = false
@@ -201,10 +207,10 @@ export default {
   <HomeView v-if="currentPage == 'home'" />
   <AboutView v-if="currentPage == 'about'" @go-To="goToCars" />
   <ContactView v-if="currentPage == 'ContactView'" />
-  <MyBookingsView v-if="currentPage == 'MyBookingsView'" :bookingconfirmed="confirmedBooking" />
+  <MyBookingsView v-if="currentPage == 'MyBookingsView'" :bookingconfirmed="confirmedBooking" :bookingView="forBookingFromPrice" />
   <CarCard v-if="currentPage == 'CarCard'" @openModal="openModalAct" :carsPicture="array1" />
   <CarDetailsModal @showForm="showFormAct" @closeToParent="closeModal" :carsPicture="details" />
-  <BookingForm v-if="modal == true" @sent-to="sendForm" />
-  <BookingConf v-if="modalConfirm" :bookingConfirm="booking" @complete="receiveComplete" @gotoModal="goToModal" />
+  <BookingForm v-if="modal == true" @sent-to="sendForm" :sendPrice="forBookingFromPrice" />
+  <BookingConf v-if="modalConfirm" :bookingConfirm="booking" :confirm="forBookingFromPrice" @complete="receiveComplete"@gotoModal="goToModal" />
   <Footer />
 </template>

@@ -3,9 +3,10 @@ import MyBookingsView from './MyBookingsView.vue';
 
 export default {
     props: ['carsPicture'],
-    data(){
-        return{
-        
+    emits: ['closeToParent', 'showForm'],
+    data() {
+        return {
+
         }
 
     },
@@ -13,11 +14,11 @@ export default {
         // detailBtnclose(mod) {
         //     this.$emit('closeModal', mod)
         // }
-        remove(detail){
+        remove(detail) {
             this.$emit('closeToParent', detail)
         },
-        bookNow(modal){
-            this.$emit('showForm', modal)
+        bookNow(i, n, modal) {
+            this.$emit('showForm', { price: i, name: n }, modal)
         }
     }
 
@@ -29,7 +30,7 @@ export default {
         <div class="w-full h-screen bg-black/10 backdrop-blur-2xl absolute top-0"></div>
         <div class=" w-full h-fit flex justify-center items-center mt-50 relative top-0">
             <div class="grid grid-cols-1">
-                <div  class="bg-[#87d8f3] w-190 h-fit pb-5">
+                <div class="bg-[#87d8f3] w-190 h-fit pb-5">
                     <div class="flex justify-end p-3">
                         <button @click="remove" class="cursor-pointer font-bold hover:text-red-500">X</button>
                     </div>
@@ -37,13 +38,15 @@ export default {
                         <img class="w-90 h-80 rounded-3xl" :src="detail.image" alt="">
                         <div class="w-80 space-y-2">
                             <h1 class="text-2xl font-bold font-arial">{{ detail.name }} {{ detail.brand }}</h1>
-                            <h1 class="text-sm font-arial"><span class="font-bold">Description:</span> {{ detail.description }}</h1>
-                            <h1 class="text-sm font-arial"><span class="font-bold">Key Features:</span>  {{ detail.features }}</h1>
+                            <h1 class="text-sm font-arial"><span class="font-bold">Description:</span> {{
+                                detail.description }}</h1>
+                            <h1 class="text-sm font-arial"><span class="font-bold">Key Features:</span> {{
+                                detail.features }}</h1>
                             <div>
                                 <p class="font-arial font-bold text-md">Price:<span class="font-semibold">₱{{
                                     detail.price
                                         }}.00 /24hrs</span></p>
-                                <button @click="bookNow(true)"
+                                <button @click="bookNow(detail.price, detail.name, true)"
                                     class="bg-[#0d4976e0] px-8 py-2 rounded-full text-white font-arial font-semibold mt-5">BOOK</button>
                             </div>
                         </div>

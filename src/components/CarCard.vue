@@ -1,14 +1,15 @@
 <script>
 export default {
     props: ['carsPicture'],
+    emits: ['openModal'],
     data() {
         return {
-            
+
         }
     },
-    methods:{
-        detailBtn(service){
-            this.$emit('openModal', service)
+    methods: {
+        detailBtn(n, b, p, i, s, t, d, f) {
+            this.$emit('openModal', { name: n, brand: b, price: p, image: i, status: s, type: t, description: d, features: f })
         }
     }
 }
@@ -16,17 +17,19 @@ export default {
 
 <template>
     <!-- <div> -->
-    <section class="py-10 bg-cover bg-center bg-[url('https://i.pinimg.com/736x/de/b0/29/deb029d0c81400200bfd0efc90836c14.jpg')]" id="services">
+    <section
+        class="py-10 bg-cover bg-center bg-[url('https://i.pinimg.com/736x/de/b0/29/deb029d0c81400200bfd0efc90836c14.jpg')]"
+        id="services">
 
         <h2 class="text-3xl font-bold text-white mb-8 text-center">DSLJ Car Rental</h2>
 
         <div class="grid grid-cols-3 gap-8 container mx-auto pl-50">
 
-            <div v-for="(service, index) in carsPicture" :key="service.id" class="">
+            <div v-for="service in carsPicture" :key="service.id" class="">
                 <div
                     class="bg-sky-200 rounded-lg shadow-md overflow-hidden hover:scale-103 transition duration-300 cursor-pointer">
-                        <img :src="service.image" alt=""
-                            class="w-full h-64 object-fit hover:scale-103 transition duration-300">
+                    <img :src="service.image" alt=""
+                        class="w-full h-64 object-fit hover:scale-103 transition duration-300">
 
                     <div class="py-1 text-center">
                         <div class="flex justify-center items-center gap-3">
@@ -40,7 +43,8 @@ export default {
 
                     <div class="flex justify-between items-center mb-5 px-5">
                         <p class="text-xl">₱{{ service.price }}</p>
-                        <button @click="detailBtn(service)"
+                        <button
+                            @click="detailBtn(service.name, service.brand, service.price, service.image, service.status, service.type, service.description, service.features)"
                             class="px-5 py-2 text-white bg-sky-500 rounded-lg hover:scale-103 transition duration-300 cursor-pointer">Details</button>
                     </div>
                 </div>
@@ -48,5 +52,5 @@ export default {
 
         </div>
     </section>
- 
+
 </template>
