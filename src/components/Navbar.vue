@@ -2,21 +2,37 @@
 export default {
     data() {
         return {
-
+            isOpen: false 
         }
     },
     methods: {
         Nav(page) {
-            this.$emit('goTo', page)
+            this.$emit('goTo', page);
+            this.isOpen = false; 
         }
     }
 }
 </script>
 
 <template>
+
+    <button @click="isOpen = !isOpen" class="md:hidden fixed top-4 left-4 z-999 bg-gray-800 text-white p-2 rounded-md shadow-lg focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+    </button>
+
+   
+    <div v-if="isOpen" @click="isOpen = false" class="md:hidden fixed inset-0 bg-black/50 z-997"></div>
+
+   
     <div class="flex h-screen fixed w-fit z-998">
         <!-- sidebar -->
-        <div class="hidden md:flex flex-col w-64 bg-gray-800 rounded-md">
+        <div :class="[
+            'flex flex-col w-64 bg-gray-800 rounded-md transition-transform duration-300 ease-in-out',
+            'fixed md:static inset-y-0 left-0 z-998',
+            isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+        ]">
 
             <div class="flex flex-col flex-1 overflow-y-auto">
                 <nav
