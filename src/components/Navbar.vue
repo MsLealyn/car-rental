@@ -2,13 +2,13 @@
 export default {
     data() {
         return {
-            isOpen: false 
+            isOpen: false
         }
     },
     methods: {
         Nav(page) {
             this.$emit('goTo', page);
-            this.isOpen = false; 
+            this.isOpen = false;
         }
     }
 }
@@ -16,16 +16,17 @@ export default {
 
 <template>
 
-    <button @click="isOpen = !isOpen" class="md:hidden fixed top-4 left-4 z-999 bg-gray-800 text-white p-2 rounded-md shadow-lg focus:outline-none">
+    <button @click="isOpen = !isOpen"
+        class="md:hidden fixed top-4 left-4 z-999 bg-gray-800 text-white p-2 rounded-md shadow-lg focus:outline-none">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
     </button>
 
-   
+
     <div v-if="isOpen" @click="isOpen = false" class="md:hidden fixed inset-0 bg-black/50 z-997"></div>
 
-   
+
     <div class="flex h-screen fixed w-fit z-998">
         <!-- sidebar -->
         <div :class="[
@@ -56,6 +57,15 @@ export default {
                             </svg>
                             Home
                         </p>
+                        <p @click="Nav('CarCard')"
+                            class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-400 hover:bg-opacity-25 rounded-2xl">
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                                <path fill="rgb(255, 255, 255)"
+                                    d="M199.2 181.4L173.1 256L466.9 256L440.8 181.4C436.3 168.6 424.2 160 410.6 160L229.4 160C215.8 160 203.7 168.6 199.2 181.4zM103.6 260.8L138.8 160.3C152.3 121.8 188.6 96 229.4 96L410.6 96C451.4 96 487.7 121.8 501.2 160.3L536.4 260.8C559.6 270.4 576 293.3 576 320L576 512C576 529.7 561.7 544 544 544L512 544C494.3 544 480 529.7 480 512L480 480L160 480L160 512C160 529.7 145.7 544 128 544L96 544C78.3 544 64 529.7 64 512L64 320C64 293.3 80.4 270.4 103.6 260.8zM192 368C192 350.3 177.7 336 160 336C142.3 336 128 350.3 128 368C128 385.7 142.3 400 160 400C177.7 400 192 385.7 192 368zM480 400C497.7 400 512 385.7 512 368C512 350.3 497.7 336 480 336C462.3 336 448 350.3 448 368C448 385.7 462.3 400 480 400z" />
+                            </svg>
+                            Cars
+
+                        </p>
                         <p @click="Nav('about')"
                             class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-400 hover:bg-opacity-25 rounded-2xl">
                             <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
@@ -73,15 +83,6 @@ export default {
                             </svg>
                             Contact
                         </p>
-                        <p @click="Nav('CarCard')"
-                            class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-400 hover:bg-opacity-25 rounded-2xl">
-                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-                                <path fill="rgb(255, 255, 255)"
-                                    d="M199.2 181.4L173.1 256L466.9 256L440.8 181.4C436.3 168.6 424.2 160 410.6 160L229.4 160C215.8 160 203.7 168.6 199.2 181.4zM103.6 260.8L138.8 160.3C152.3 121.8 188.6 96 229.4 96L410.6 96C451.4 96 487.7 121.8 501.2 160.3L536.4 260.8C559.6 270.4 576 293.3 576 320L576 512C576 529.7 561.7 544 544 544L512 544C494.3 544 480 529.7 480 512L480 480L160 480L160 512C160 529.7 145.7 544 128 544L96 544C78.3 544 64 529.7 64 512L64 320C64 293.3 80.4 270.4 103.6 260.8zM192 368C192 350.3 177.7 336 160 336C142.3 336 128 350.3 128 368C128 385.7 142.3 400 160 400C177.7 400 192 385.7 192 368zM480 400C497.7 400 512 385.7 512 368C512 350.3 497.7 336 480 336C462.3 336 448 350.3 448 368C448 385.7 462.3 400 480 400z" />
-                            </svg>
-                            Cars
-
-                        </p>
                         <p @click="Nav('MyBookingsView')"
                             class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-400 hover:bg-opacity-25 rounded-2xl">
                             <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
@@ -95,7 +96,7 @@ export default {
             </div>
         </div>
         <div>
-            
+
         </div>
 
     </div>

@@ -36,7 +36,9 @@ export default {
           image: "https://i.pinimg.com/736x/74/95/4b/74954b6069be2d5274c7a25a0a056cc7.jpg",
           type: "Mid-size 7-seater SUV",
           status: "Available",
-          description: "Experience ultimate comfort, style, and reliability on your next trip with this premium white Toyota Fortuner SUV. Perfect for family vacations, city driving, or long road trips, offering spacious seating and a smooth ride against any backdrop.",
+          seaters: "7",
+          door: "5",
+          gas: "Diesel",
           features: "Spacious interior, powerful performance, modern styling, and top-tier safety."
 
         },
@@ -48,9 +50,10 @@ export default {
           image: "https://i.pinimg.com/1200x/00/cf/66/00cf66715afb3e6bf92daeeb3c228f7e.jpg",
           type: "Kei Car",
           status: "Available",
-          description: "Enjoy effortless city driving with this compact yet surprisingly spacious Daihatsu Tanto. Designed for maximum practical convenience, high fuel efficiency, and easy parking, it is the ideal choice for quick city errands, daily commutes, or budget-friendly travel.",
+          seaters: "7",
+          door: "5",
+          gas: "Diesel",
           features: "Excellent fuel efficiency, easy maneuvering, high roofline with ample headroom, and convenient sliding side doors."
-
         },
         {
           id: 3,
@@ -60,9 +63,10 @@ export default {
           image: "https://remunerator.com.au/uploads/media/LDV-eT60-1664547025.jpg",
           type: "Mid-size Pickup Truck / Ute",
           status: "Available",
-          description: "Power through any terrain or tackle heavy loads with this rugged, double-cab Maxus T60 pickup truck. Offering a strong combination of utility, performance, and modern comfort, it is the perfect rental for off-road adventures, hauling gear, or long road trips.",
+          seaters: "7",
+          door: "5",
+          gas: "Diesel",
           features: "Spacious double-cab interior, large cargo bed, powerful engine performance, and durable, modern styling."
-
         },
         {
           id: 4,
@@ -72,7 +76,9 @@ export default {
           image: "https://www.topgear.com/sites/default/files/2021/12/STARIAHighlander2.2DAWD-01.jpg",
           type: "Minivan/ Passenger Van",
           status: "Available",
-          description: "Travel in futuristic style and premium comfort with this spacious Hyundai Staria. Designed for large families, group outings, or executive transport, it offers unmatched interior space, panoramic visibility, and a ultra-smooth ride for long journeys.",
+          seaters: "7",
+          door: "5",
+          gas: "Diesel",
           features: "High-capacity seating, futuristic design, spacious luxury cabin, advanced safety technology, and smooth highway performance."
         },
         {
@@ -83,7 +89,9 @@ export default {
           image: "https://static0.carbuzzimages.com/wordpress/wp-content/uploads/gallery-images/original/1230000/700/1230700.jpg",
           type: "Compact Sedan",
           status: "Available",
-          description: "Enjoy a sleek, modern ride with this stylish grey Hyundai Elantra sedan. Offering a perfect blend of fuel efficiency, cutting-edge tech, and premium interior comfort, it is an ideal choice for business trips, weekend getaways, or everyday city driving.",
+          seaters: "7",
+          door: "5",
+          gas: "Diesel",
           features: "Excellent fuel economy, sleek aerodynamic design, comfortable seating for five, and advanced infotainment & safety features."
         },
         {
@@ -94,9 +102,10 @@ export default {
           image: "https://i.pinimg.com/1200x/6f/6d/ff/6f6dff376fe0f3b9f600eaf297a5a49b.jpg",
           type: "Mid-size 7-seater SUV",
           status: "Available",
-          description: "Experience premium comfort, rugged reliability, and commanding style with this dark metallic Toyota SW4 SUV. Designed for smooth highway cruising as well as challenging off-road terrains, it provides a spacious and refined ride for family road trips, group travel, or executive rental.",
+          seaters: "7",
+          door: "5",
+          gas: "Diesel",
           features: "High ground clearance, spacious cabin seating, powerful performance, and modern safety & convenience features."
-
         },
         {
           id: 7,
@@ -106,8 +115,10 @@ export default {
           image: "https://assets.autoweek.nl/m/0ctylsvbxuv7_800.jpg",
           type: "Diesel Car",
           status: "Available",
-          description: "This shows a light beige BMW iX1 electric SUV parked in front of a modern building with wooden paneling.",
-          features: "The BMW iX1 is an all-electric luxury SUV offering up to 313 horsepower, a 440 km range, and a curved digital interior display.."
+          seaters: "7",
+          door: "5",
+          gas: "Diesel",
+          features: "The BMW iX1 is an all-electric luxury SUV offering up to 313 horsepower, a 440 km range, and a curved digital interior display."
 
         },
         {
@@ -118,9 +129,10 @@ export default {
           image: "https://www.blessthisstuff.com/imagens/listagem/2023/thum_outside-van-mercedes-sprinter-camper.jpeg",
           type: "CamperVan",
           status: "Available",
-          description: "The image shows a dark, off-road customized Mercedes-Benz Sprinter camper van equipped with all-terrain tires, roof racks, ladders, a front winch, and LED auxiliary lighting, parked in an open field.",
+          seaters: "7",
+          door: "5",
+          gas: "Diesel",
           features: "Off-Road Modifications: Heavy-duty front bumper with integrated winch, fog lights, cowl-mounted auxiliary pod lights, and all-terrain tires."
-
         },
         {
           id: 9,
@@ -130,9 +142,10 @@ export default {
           image: "https://hips.hearstapps.com/hmg-prod/images/2025-porsche-911-hybrid-142-66560ae0be861.jpg",
           type: "Convertible / Cabriolet",
           status: "Available",
-          description: "A two-door luxury performance convertible featuring a black exterior with red soft-top/interior accents, classic rounded matrix LED headlights, and lightweight staggered alloy wheels.",
+          seaters: "7",
+          door: "5",
+          gas: "Diesel",
           features: "Performance: Powered by a 3.0-liter twin-turbocharged flat-six rear-mounted engine paired with an 8-speed dual-clutch (PDK) automatic transmission."
-
         },
       ],
       details: [],
@@ -150,9 +163,9 @@ export default {
       this.modal = false
     },
 
-    openModalAct(name, brand, price, image, status, type, description, features) {
+    openModalAct(name, brand, price, image, status, type, seaters, door, gas, features) {
       // this.modal = mod
-      this.details.push({ ...name, ...brand, ...price, ...image, ...status, ...type, ...description, ...features })
+      this.details.push({ ...name, ...brand, ...price, ...image, ...status, ...type, ...seaters, ...door, ...gas, ...features })
       this.forBookingFromPrice = []
     },
     closeModalAct(i) {
@@ -168,19 +181,12 @@ export default {
       this.forBookingFromPrice.push({ ...price, ...name })
       this.modal = true
       this.modalConfirm = false
-
-
     },
     sendForm(name, number, email, PickLoc, droploc, dateS, pickTime, returnD, typeS, pass, amount, duration, price) {
       this.booking.push({ ...name, ...number, ...email, ...PickLoc, ...droploc, ...dateS, ...pickTime, ...returnD, ...typeS, ...pass, ...amount, ...duration, ...price })
       this.currentPage = false
       this.modal = false
       this.modalConfirm = true
-      
-    
-
-
-
     },
     receiveComplete(name, email, number, PickLoc, droploc, dateS, amount, duration, price) {
       this.confirmedBooking.push({ ...name, ...email, ...number, ...PickLoc, ...droploc, ...dateS, ...amount, ...duration, ...price })
@@ -191,13 +197,16 @@ export default {
     },
     goToCars(page) {
       this.currentPage = page
-      
-      
     },
     goToModal(index) {
       this.modal = true;
       this.modalConfirm = false
-      this.booking.splice(index, 1)
+      this.booking.splice(index,1)
+
+    },
+    cancelBooking(page) {
+      this.currentPage = page
+      this.modal = false
     }
 
 
@@ -212,10 +221,12 @@ export default {
   <HomeView v-if="currentPage == 'home'" />
   <AboutView v-if="currentPage == 'about'" @go-To="goToCars" />
   <ContactView v-if="currentPage == 'ContactView'" />
-  <MyBookingsView v-if="currentPage == 'MyBookingsView'" :bookingconfirmed="confirmedBooking" :bookingView="forBookingFromPrice" />
+  <MyBookingsView v-if="currentPage == 'MyBookingsView'" :bookingconfirmed="confirmedBooking"
+    :bookingView="forBookingFromPrice" />
   <CarCard v-if="currentPage == 'CarCard'" @openModal="openModalAct" :carsPicture="array1" />
   <CarDetailsModal @showForm="showFormAct" @closeToParent="closeModal" :carsPicture="details" />
-  <BookingForm v-if="modal == true" @sent-to="sendForm" :sendPrice="forBookingFromPrice" />
-  <BookingConf v-if="modalConfirm" :bookingConfirm="booking" :confirm="forBookingFromPrice" @complete="receiveComplete"@gotoModal="goToModal" />
+  <BookingForm v-if="modal == true" @sent-to="sendForm" :sendPrice="forBookingFromPrice" @cancel="cancelBooking" />
+  <BookingConf v-if="modalConfirm" :bookingConfirm="booking" :confirm="forBookingFromPrice" @complete="receiveComplete"
+    @gotoModal="goToModal" />
   <Footer />
 </template>

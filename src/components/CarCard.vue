@@ -8,8 +8,8 @@ export default {
         }
     },
     methods: {
-        detailBtn(n, b, p, i, s, t, d, f) {
-            this.$emit('openModal', { name: n, brand: b, price: p, image: i, status: s, type: t, description: d, features: f })
+        detailBtn(n, b, p, i, s, t, d, f, g, o) {
+            this.$emit('openModal', { name: n, brand: b, price: p, image: i, status: s, type: t, seaters: d, door: f, gas: g, features: o })
         }
     }
 }
@@ -45,7 +45,7 @@ export default {
                     <div class="flex justify-between items-center mb-5 px-4 sm:px-5">
                         <p class="text-lg sm:text-xl font-bold">₱{{ service.price }}</p>
                         <button
-                            @click="detailBtn(service.name, service.brand, service.price, service.image, service.status, service.type, service.description, service.features)"
+                            @click="detailBtn(service.name, service.brand, service.price, service.image, service.status, service.type, service.seaters, service.door, service.gas, service.features)"
                             class="px-4 sm:px-5 py-2 text-sm sm:text-base text-white bg-sky-500 rounded-lg hover:scale-103 transition duration-300 cursor-pointer">Details</button>
                     </div>
                 </div>
