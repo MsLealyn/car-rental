@@ -2,7 +2,7 @@
 
 export default {
     props: ['sendPrice'],
-    emits: ['sent-to'],
+    emits: ['sent-to', 'cancel'],
     data() {
         return {
             fullname: '',
@@ -38,7 +38,10 @@ export default {
                 duration: this.Duration,
             })
             alert('submitted');
-            console.log(this.PickUptime)
+
+        },
+        cancelNa(page) {
+            this.$emit('cancel', page)
         }
     }
 }
@@ -50,7 +53,7 @@ export default {
         class="mx-auto py-6 sm:py-10 w-full h-fit z-10 flex justify-center items-center px-4 sm:px-6 lg:px-8 bg-sky-50">
         <div class="bg-white w-full max-w-4xl rounded-lg border-2 border-blue-400/20 p-5 sm:p-8 lg:p-10 shadow-lg">
             <div class="space-y-6">
-            
+
                 <div class="text-center">
                     <h1 class="text-xl sm:text-2xl md:text-3xl font-semibold text-orange-800 uppercase">
                         Car Rental Booking Form
@@ -94,7 +97,7 @@ export default {
                         class="bg-gray-50 border border-gray-300 text-gray-900 h-12 w-full rounded-md px-4 placeholder:text-gray-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 focus:outline-none transition-colors" />
                 </div>
 
-           
+
                 <div class="space-y-3">
                     <p class="text-gray-700 font-medium block">Drop Off Location:</p>
                     <input v-model="dropOffLocation" type="text"
@@ -102,7 +105,7 @@ export default {
                         class="bg-gray-50 border border-gray-300 text-gray-900 h-12 w-full rounded-md px-4 placeholder:text-gray-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 focus:outline-none transition-colors" />
                 </div>
 
-         
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-3">
                         <label class="text-gray-700 font-medium block">Date of Service:</label>
@@ -146,51 +149,56 @@ export default {
                         </select>
                     </div>
                 </div>
+                <div v-for="(item, index) in sendPrice" :key="index">
+                    <div class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-3">
+                                <label class="text-gray-700 font-medium block">Amount Payable:</label>
+                                <div
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 h-12 w-full rounded-md px-4 flex items-center transition-colors">
+                                    <p class="text-gray-900">₱{{ item.price }}</p>
+                                </div>
+                            </div>
 
-                <div v-for="(item, index) in sendPrice" :key="index" class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-3">
-                            <label class="text-gray-700 font-medium block">Amount Payable:</label>
-                            <div
-                                class="bg-gray-50 border border-gray-300 text-gray-900 h-12 w-full rounded-md px-4 flex items-center transition-colors">
-                                <p class="text-gray-900">₱{{ item.price }}</p>
+                            <div class="space-y-3">
+                                <label class="text-gray-700 font-medium block">Duration:</label>
+                                <select v-model="Duration"
+                                    class="bg-gray-50 border border-gray-300 text-gray-700 h-12 w-full rounded-md px-4 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 focus:outline-none transition-colors">
+                                    <option value="">- Please Select -</option>
+                                    <option value="6 hours">6 hours</option>
+                                    <option value="12 hours">12 hours</option>
+                                    <option value="24 hours">24 hours</option>
+                                    <option value="32 hours">32 hours</option>
+                                    <option value="48 hours">48 hours</option>
+                                    <option value="60 hours">60 hours</option>
+                                    <option value="72 hours">72 hours</option>
+                                </select>
                             </div>
                         </div>
 
-                        <div class="space-y-3">
-                            <label class="text-gray-700 font-medium block">Duration:</label>
-                            <select v-model="Duration"
-                                class="bg-gray-50 border border-gray-300 text-gray-700 h-12 w-full rounded-md px-4 focus:border-orange-400 focus:ring-2 focus:ring-orange-200 focus:outline-none transition-colors">
-                                <option value="">- Please Select -</option>
-                                <option value="6 hours">6 hours</option>
-                                <option value="12 hours">12 hours</option>
-                                <option value="24 hours">24 hours</option>
-                                <option value="32 hours">32 hours</option>
-                                <option value="48 hours">48 hours</option>
-                                <option value="60 hours">60 hours</option>
-                                <option value="72 hours">72 hours</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="border-t border-gray-200 pt-6 space-y-6">
-                        <h3 class="text-lg font-semibold text-gray-800">3. VEHICLE PREFERENCE/SELECTED CAR</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-3">
-                                <label class="text-gray-700 font-medium block">Type of Service:</label>
-                                <div
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 h-12 w-full rounded-md px-4 flex items-center transition-colors">
-                                    <p class="text-gray-900 truncate">{{ item.name }}</p>
+                        <div class="border-t border-gray-200 pt-6 space-y-6">
+                            <h3 class="text-lg font-semibold text-gray-800">3. VEHICLE PREFERENCE/SELECTED CAR</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-3">
+                                    <label class="text-gray-700 font-medium block">Type of Service:</label>
+                                    <div
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 h-12 w-full rounded-md px-4 flex items-center transition-colors">
+                                        <p class="text-gray-900 truncate">{{ item.name }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="pt-6">
+                <div class="pt-6 space-y-5">
                     <button @click="submitNa"
                         class="w-full bg-orange-800 cursor-pointer hover:bg-orange-600 text-white font-semibold h-14 text-lg rounded-md transition-colors duration-200 shadow-md hover:shadow-lg">
                         Submit
+                    </button>
+                    <button @click="cancelNa('CarCard')"
+                        class="w-full bg-orange-800 cursor-pointer hover:bg-orange-600 text-white font-semibold h-14 text-lg rounded-md transition-colors duration-200 shadow-md hover:shadow-lg">
+                        Cancel
                     </button>
                 </div>
             </div>

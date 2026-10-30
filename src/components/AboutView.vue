@@ -18,7 +18,7 @@
 
 <template>
     <section id="about" class="py-12 md:py-20 px-4 sm:px-8 md:px-12 lg:px-20 bg-[#121212] min-h-screen h-auto flex items-center">
-        <div class="container mx-auto">
+        <div class=" mx-auto">
             <div class="mb-12">
             
                 <h2 class="text-purple-400 text-base sm:text-lg mb-2" data-aos="fade-down">
